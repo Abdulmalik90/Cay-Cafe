@@ -1,0 +1,64 @@
+@custom-variant dark (&:where(.dark, .dark *));
+@import './fonts.css';
+@import './tailwind.css';
+@import './theme.css';
+
+
+
+/* إجبار الموقع على استخدام خط القاهرة عندما تكون اللغة عربية فقط */
+html[dir="rtl"],
+html[dir="rtl"] body, 
+html[dir="rtl"] * {
+    font-family: 'Cairo', sans-serif !important;
+}
+/* ========================================================= */
+
+/* Container to hide overflow and prevent screen horizontal scrolling */
+.slider-container {
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Let the flex container grow to fit all cards exactly using max-content */
+.mobile-infinite-scroll {
+    width: max-content; 
+}
+
+/* Stop animation on Desktop (since it becomes a Grid) */
+@media (min-width: 768px) {
+    .mobile-infinite-scroll {
+        animation: none !important;
+        width: 100% !important;
+        transform: none !important;
+    }
+}
+
+/* Animation for Arabic (RTL) - Moves Right smoothly */
+html[dir="rtl"] .mobile-infinite-scroll,
+body[dir="rtl"] .mobile-infinite-scroll {
+    animation: scrollRight 20s linear infinite;
+}
+
+/* Animation for English (LTR) - Moves Left smoothly */
+html[dir="ltr"] .mobile-infinite-scroll,
+body[dir="ltr"] .mobile-infinite-scroll,
+.mobile-infinite-scroll {
+    animation: scrollLeft 20s linear infinite; 
+}
+
+/* The exact calculation (-50% - 12px) accounts for the gap between cards perfectly */
+@keyframes scrollLeft {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - 12px)); }
+}
+
+@keyframes scrollRight {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(50% + 12px)); }
+}
+
+/* Pause animation when user touches or hovers over it */
+.mobile-infinite-scroll:hover,
+.mobile-infinite-scroll:active {
+    animation-play-state: paused;
+}
