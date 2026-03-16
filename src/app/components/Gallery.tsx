@@ -3,12 +3,12 @@ import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useLanguage } from "./LanguageContext";
 
 const GALLERY_IMAGES = [
-  { id: 1, src: "/public/images/the building out.jpg" },
-  { id: 2, src: "/public/images/building inside.jpg" },
-  { id: 3, src: "/public/images/ceffee-with-sea.jpg" },
-  { id: 4, src: "/public/images/sea.jpg" },
-  { id: 5, src: "/public/images/the gate.jpg" },
-  { id: 6, src: "/public/images/Corwason.jpg" },
+  { id: 1, src: "/images/the building out.jpg" },
+  { id: 2, src: "/images/building inside.jpg" },
+  { id: 3, src: "/images/ceffee-with-sea.jpg" },
+  { id: 4, src: "/images/sea.jpg" },
+  { id: 5, src: "/images/the gate.jpg" },
+  { id: 6, src: "/images/Corwason.jpg" },
 ];
 
 export function Gallery() {
